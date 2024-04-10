@@ -135,3 +135,26 @@ const plakatFilmu = document.querySelector ("img")
 plakatFilmu.src = vybranyFilm.plakat.url
 
 
+
+const formular = document.querySelector ("#note-form")
+const poznamka = document.querySelector ("#message-input")
+const podminky = document.querySelector ("#terms-checkbox")
+formular.addEventListener ("submit", (event) => {
+	event.preventDefault()
+	if (poznamka.value.length >= 1) {
+		poznamka.classList.remove ("is-invalid")
+		if (podminky.checked) {
+			podminky.classList.remove ("is-invalid") 
+			formular.innerHTML = `<p class="card-text">${poznamka.value}</p>`
+		} else {
+			podminky.classList.add ("is-invalid")
+			podminky.focus()
+		}
+	} else {
+		poznamka.classList.add ("is-invalid")
+		poznamka.focus()
+	}
+})
+
+
+
